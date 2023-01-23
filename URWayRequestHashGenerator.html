@@ -10,14 +10,15 @@
                 var terminalId = document.getElementById("terminalId").value;
                 var password = document.getElementById("password").value;
                 var merchantKey = document.getElementById("merchantKey").value;
+                var amount = document.getElementById("amount").value;
                 var currancy = document.getElementById("currancy").value;
                 
-                if (!trackId || !terminalId || !password || !merchantKey || !currancy) {
+                if (!trackId || !terminalId || !password || !merchantKey || !amount || !currancy) {
                     document.getElementById("hash").innerHTML = "Please fill all fields";
                     return;
                 }
 
-                var hash = sha256(`${trackId}|${terminalId}|${password}|${merchantKey}|${currancy}`);
+                var hash = sha256(`${trackId}|${terminalId}|${password}|${merchantKey}|${amount}|${currancy}`);
 
                 document.getElementById("hash").innerHTML = hash;
             }
@@ -36,6 +37,7 @@
                 <input id="terminalId" type="text" placeholder="Terminal Id"/>
                 <input id="password" type="password" placeholder="Password"/>
                 <input id="merchantKey" type="password" placeholder="Merchant Key"/>
+                <input id="amount" type="text" placeholder="amount"/>
                 <input id="currancy" type="text" placeholder="Currancy" value="SAR"/>
                 <button onclick="generateHash()">Generate</button>
                 <label class="my-3">Generated Hash is -> <span id="hash"></span></label>
